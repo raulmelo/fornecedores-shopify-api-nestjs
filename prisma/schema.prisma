@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_PRIVATE_URL")
+}
+
+enum Role {
+  MASTER
+  ADMIN
+  FORNECEDOR
+  VISUALIZADOR
+}
+
+model User {
+  id             Int                  @id @default(autoincrement())
+  name           String
+  email          String               @unique
+  cpf            String               @unique
+  password       String
+  notes          String               @default("")
+  role           Role                 @default(VISUALIZADOR)
+  tokens         Token[]
+  passwordResets PasswordResetToken[]
+  businesses     Business[]           @relation("BusinessToUser")
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+}
+
+model Token {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  disabled  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PasswordResetToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Business {
+  id        Int      @id @default(autoincrement())
+  idShopify String   @unique
+  title     String
+  body_html String
+  imageUrl  String
+  cnpj      String   @unique
+  users     User[]   @relation("BusinessToUser")
+  disabled  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

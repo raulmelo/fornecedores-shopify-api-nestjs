@@ -1,0 +1,39 @@
+BadRequestException (400): Indica que o servidor não pode ou não vai processar a requisição devido a algo que é percebido como um erro do cliente (e.g., sintaxe malformada da requisição).
+
+UnauthorizedException (401): Significa que a requisição não foi aplicada porque falta autenticação válida para o recurso alvo.
+
+NotFoundException (404): Ocorre quando um recurso específico não é encontrado. É comumente usado em rotas ou recursos que não existem no servidor.
+
+ForbiddenException (403): Indica que o servidor entendeu a requisição, mas se recusa a autorizá-la. Isso geralmente acontece por falta de permissões.
+
+NotAcceptableException (406): Lançada quando o servidor não encontra nenhum conteúdo seguindo os critérios dados pelo agente do usuário.
+
+RequestTimeoutException (408): Esta exceção é lançada quando o servidor gostaria de desligar uma conexão não utilizada. É gerada quando uma requisição demora muito para ser completada pelo cliente.
+
+ConflictException (409): Indica um conflito no estado atual do recurso, como inserir um registro duplicado.
+
+GoneException (410): Indica que o recurso requisitado não está mais disponível no servidor e que esta é uma condição permanente.
+
+HttpVersionNotSupportedException (505): Ocorre quando a versão HTTP usada na requisição não é suportada pelo servidor.
+
+PayloadTooLargeException (413): Esta exceção é lançada quando a carga útil da requisição é maior do que os limites definidos pelo servidor.
+
+UnsupportedMediaTypeException (415): Lançada quando o tipo de mídia dos dados da requisição não é suportado pelo servidor, portanto, o servidor rejeita a requisição.
+
+UnprocessableEntityException (422): Significa que o servidor entende o tipo de conteúdo da requisição, mas não foi capaz de processar os dados contidos.
+
+InternalServerErrorException (500): Indica um erro genérico no servidor, que não se enquadra em nenhuma outra categoria.
+
+NotImplementedException (501): Lançada quando o servidor não reconhece o método da requisição ou não tem capacidade para completá-la.
+
+ImATeapotException (418): Uma exceção humorística, referenciando o clássico April Fools "Hyper Text Coffee Pot Control Protocol". Usada quando o servidor se recusa a tentar fazer café com um bule de chá.
+
+MethodNotAllowedException (405): Ocorre quando o método HTTP usado na requisição não é permitido para o recurso especificado.
+
+BadGatewayException (502): Indica que o servidor, enquanto atuava como um gateway ou proxy, recebeu uma resposta inválida do servidor upstream.
+
+ServiceUnavailableException (503): Significa que o servidor não está pronto para lidar com a requisição, comumente usado para manutenção do servidor.
+
+GatewayTimeoutException (504): Lançada quando o servidor, atuando como um gateway ou proxy, não recebeu uma resposta a tempo do servidor upstream.
+
+PreconditionFailedException (412): Esta exceção é lançada quando as condições dadas nos cabeçalhos da requisição falharam.
